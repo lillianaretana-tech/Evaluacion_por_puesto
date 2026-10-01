@@ -1,273 +1,182 @@
-<!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SBM Gestión de Competencias V6.1</title>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LillyTech Cotizador Facility Services</title>
 <style>
-:root{--n:#17365d;--b:#2f5597;--l:#eef3f9;--g:#667085;--line:#d9dee8;--ok:#effaf3;--warn:#fff7ed}
-*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:#f4f7fb;color:#1f2937}
-header{background:var(--n);color:#fff;padding:18px 24px}header h1{margin:0;font-size:21px}header p{margin:5px 0 0;color:#d9e4f2}
-nav{background:#fff;border-bottom:1px solid #dfe4ec;padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap}
-.wrap{max-width:1100px;margin:24px auto;padding:0 16px 48px}.card{background:#fff;border:1px solid #e4e7ec;border-radius:14px;padding:20px;margin-bottom:18px;box-shadow:0 4px 16px #0000000d}
-h2{color:var(--n);margin-top:0}h3{color:var(--b);font-size:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-label{font-weight:650;display:block;margin:8px 0 5px}input,select,textarea{width:100%;padding:10px;border:1px solid #d0d5dd;border-radius:8px;font:inherit}
-.opt{display:flex;gap:8px;border:1px solid #e4e7ec;border-radius:8px;padding:9px;margin:7px 0;font-weight:400}.opt input{width:auto;margin-top:3px}
-.btn{background:var(--n);color:#fff;border:0;border-radius:9px;padding:11px 15px;font-weight:700;cursor:pointer}.btn.secondary{background:#fff;color:var(--n);border:1px solid var(--n)}
-.notice{background:var(--l);padding:12px;border-radius:9px;font-size:13px}.case{border-left:5px solid var(--b);background:#f8fafc;padding:14px;border-radius:9px;margin:14px 0}.q{border-top:1px solid #eaecf0;margin-top:15px;padding-top:15px}
-.hidden{display:none!important}.small{font-size:12px;color:var(--g)}.score{font-size:32px;font-weight:800;color:var(--n)}.pill{display:inline-block;background:var(--l);color:var(--n);padding:5px 9px;border-radius:999px;font-size:12px;font-weight:700}
-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}th{background:var(--n);color:#fff}
-@media(max-width:760px){.grid,.grid3{grid-template-columns:1fr}}@media print{header,nav,.noPrint,.btn{display:none!important}body{background:#fff}.card{box-shadow:none;border:0}}
-</style></head><body>
-<header><h1>SBM · Sistema de Evaluación Objetiva de Competencias</h1><p>V6.3 · Casos profesionales · retroalimentación explicada · perfiles por rol</p></header>
-<nav class="noPrint">
-<button class="btn secondary" onclick="show('inicio')">Evaluación</button>
-<button class="btn secondary" onclick="show('profile')">Perfil</button>
-<button class="btn secondary" onclick="show('dashboard')">Dashboard</button>
-<button class="btn secondary" onclick="show('history')">Historial</button>
-<button class="btn secondary" onclick="show('config')">Configuración</button>
-</nav>
-<div class="wrap">
-<section id="inicio" class="card"><h2>Empezar una evaluación</h2>
-<div class="notice"><strong>Ingreso simplificado:</strong> la práctica de uso se muestra únicamente la primera vez de cada persona. Después, las evaluaciones abren directamente. Las instrucciones específicas de cada prueba se mantienen.</div>
+:root{--bg:#071426;--card:#0d213a;--card2:#102a49;--line:#284563;--text:#eef6ff;--muted:#9fb3c8;--accent:#35a7ff;--accent2:#72c7ff;--danger:#ff6b6b;--ok:#57d39b;--warn:#ffd166}*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#06111f,#0a1b30);color:var(--text)}.wrap{max-width:1250px;margin:auto;padding:20px}.top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:18px}.brand h1{margin:0;font-size:24px}.brand small{color:var(--muted)}.version{font-size:12px;color:#b9dfff;border:1px solid var(--line);padding:5px 9px;border-radius:999px}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}.card{background:rgba(13,33,58,.96);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 12px 35px #0003}.span12{grid-column:span 12}.span8{grid-column:span 8}.span6{grid-column:span 6}.span4{grid-column:span 4}.span3{grid-column:span 3}.span2{grid-column:span 2}label{display:block;color:var(--muted);font-size:12px;margin:0 0 5px}input,select,textarea{width:100%;background:#08192c;border:1px solid #31506e;color:var(--text);padding:10px;border-radius:9px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--accent)}button{border:0;border-radius:9px;padding:10px 13px;background:var(--accent);color:#001526;font-weight:750;cursor:pointer}.secondary{background:#173858;color:#d9efff}.danger{background:#4b2430;color:#ffdce2}.ghost{background:transparent;border:1px solid #31506e;color:#d9efff}.row{display:flex;gap:8px;align-items:end;flex-wrap:wrap}.section-title{font-size:16px;margin:0 0 12px}.hint{color:var(--muted);font-size:12px;line-height:1.45}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{background:#08192c;border:1px solid var(--line);padding:12px;border-radius:12px}.kpi b{font-size:19px;display:block;margin-top:4px}.kpi small{color:var(--muted)}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px 7px;border-bottom:1px solid #233f5b;text-align:left;vertical-align:top}th{color:#9fd5ff;font-size:11px;text-transform:uppercase}.tag{display:inline-block;padding:3px 7px;border-radius:999px;background:#173858;color:#bfe5ff;font-size:11px}.source{font-size:11px;color:#8fb0cc;margin-top:5px}.review{background:#0a2843;border:1px dashed #4f9bd1;padding:12px;border-radius:10px}.notice{padding:10px 12px;border-left:3px solid var(--warn);background:#302a1b;border-radius:8px;color:#ffe7a6;font-size:12px}.ok{border-left-color:var(--ok);background:#153126;color:#bff4d9}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.tabs button.active{background:var(--accent);color:#001526}.tabs button{background:#173858;color:#d9efff}.hidden{display:none}.right{text-align:right}.money{font-variant-numeric:tabular-nums}.footer{color:#7f9bb6;font-size:11px;text-align:center;padding:18px}.check{display:flex;gap:7px;align-items:center}.check input{width:auto}@media(max-width:800px){.span8,.span6,.span4,.span3,.span2{grid-column:span 12}.kpis{grid-template-columns:1fr 1fr}.top{align-items:flex-start}.row>*{flex:1 1 45%}table{font-size:11px}.wrap{padding:12px}}
+</style></head><body><div class="wrap">
+<div class="top"><div class="brand"><h1>LillyTech · Cotizador Facility Services</h1><small>Piloto de cargas de trabajo y apoyo a cotización SBM</small></div><div class="version">v0.8 · Tiempo operativo corregido</div></div>
 <div class="grid">
-<div><label>Nombre completo</label><input id="nombre"></div><div><label>Cédula o código</label><input id="codigo"></div>
-<div><label>Proyecto</label><input id="proyecto"></div><div><label>Perfil objetivo</label><select id="role" onchange="roleChanged()"><option value="leader">Leader Ready</option><option value="coord" selected>Coordinator Ready</option><option value="pm">PM Ready</option></select></div><div><label>Prueba</label><select id="inst">
-<option value="com">Comunicación Profesional</option>
-<option value="doc">Gestión Documental</option>
-<option value="excel">Excel Operativo</option>
-<option value="kpi">Indicadores y Plan de Acción</option>
-<option value="iso">Calidad e ISO 9001</option>
-<option value="admin">Administración del Proyecto</option>
-<option value="fin">Presupuesto y Control Financiero</option>
-<option value="people">Personas y Onboarding</option>
-<option value="lead">Liderazgo y Priorización</option>
-<option value="ai">IA Aplicada y Uso Responsable</option>
-<option value="client">Gestión del Cliente</option><option value="safety">Seguridad / EHS</option><option value="ops">Gestión Operativa</option><option value="scope">Gestión Contractual y Scope</option>
-</select></div></div><div id="roleInfo" class="notice" style="margin-top:12px"></div>
-<p><button class="btn" onclick="start()">Empezar</button> <button class="btn secondary" onclick="start(true)">Ver cómo funciona</button> <button class="btn secondary" onclick="showProfile()">Ver perfil de competencias</button></p></section>
-
-<section id="tutorial" class="card hidden"><h2>Práctica rápida</h2><div class="notice">Esta práctica <strong>NO vale puntos</strong>. Solo sirve para aprender cómo usar la prueba.</div><div id="tutorialBody"></div>
-<p><button class="btn" onclick="checkTutorial()">Revisar práctica</button> <button id="btnReal" class="btn hidden" onclick="openTest()">Empezar prueba</button> <button class="btn secondary" onclick="exitTest()">Salir</button></p></section>
-
-<section id="test" class="card hidden"><div style="display:flex;justify-content:space-between;gap:10px"><div><span id="code" class="pill"></span><h2 id="title"></h2></div><button class="btn secondary noPrint" onclick="exitTest()">Salir</button></div>
-<div id="caseBox" class="case"></div><div id="extraBox"></div><form id="qs"></form>
-<p><button type="button" class="btn" onclick="finish()">Terminar prueba</button></p></section>
-
-<section id="result" class="card hidden"><h2>Resultado</h2><div id="summary"></div><div id="detail"></div>
-<p class="noPrint"><button class="btn" onclick="print()">Imprimir / Guardar PDF</button> <button class="btn secondary" onclick="show('inicio')">Volver al inicio</button></p></section>
-
-<section id="profile" class="card hidden"><h2>Perfil de Competencias</h2><div id="profileContent"></div></section>
-<section id="dashboard" class="card hidden"><h2>Dashboard</h2><div id="dashContent"></div></section>
-<section id="history" class="card hidden"><h2>Historial</h2><div id="historyContent"></div></section>
-<section id="config" class="card hidden"><h2>Configuración</h2>
-<div class="notice">La nota no se puede cambiar manualmente. Cada competencia tiene varios casos equivalentes y el sistema escoge uno al azar.</div>
-<div id="configContent"></div></section>
-</div>
-
+<section class="card span12"><h2 class="section-title">Datos de la cotización</h2><div class="grid">
+<div class="span3"><label>Cliente</label><input id="cliente" placeholder="Ej. Uber"></div><div class="span3"><label>Proyecto / Site</label><input id="site" placeholder="Ej. Bambú"></div><div class="span2"><label>Fecha cotización</label><input id="fecha" type="date"></div><div class="span2"><label>Fecha ejecución</label><input id="ejec" type="date"></div><div class="span2"><label>Estado</label><select id="estado"><option>Borrador</option><option>En revisión</option><option>Enviada</option><option>Aprobada</option><option>Rechazada</option></select></div>
+</div></section>
+<section class="card span12"><div class="tabs"><button class="active" data-tab="servicios">Servicios</button><button data-tab="mano">Mano de obra</button><button data-tab="materiales">Materiales y gastos</button><button data-tab="config">Configuración</button></div>
+<div id="servicios" class="tabpane"><h2 class="section-title">Agregar servicio / carga técnica</h2><div class="grid">
+<div class="span3"><label>Servicio</label><select id="servicio"></select></div><div class="span2"><label>¿Conoces el área/cantidad?</label><select id="modoArea"><option value="exacta">Sí, la conozco</option><option value="dimensiones">Tengo largo × ancho</option><option value="estimada">Solo puedo estimarla</option></select></div><div class="span2"><label id="lblCantidad">Cantidad / área</label><input id="cantidad" type="number" min="0" step="0.01" value="1"></div><div class="span2"><label>Unidad</label><select id="unidad"><option>unidad</option><option>m²</option><option>m lineal</option><option>trampa</option><option>servicio</option></select></div><div class="span3"><label>Condición</label><select id="condicion"><option value="1">Normal</option><option value="1.15">Suciedad alta (+15%)</option><option value="1.3">Crítica (+30%)</option></select></div>
+<div id="areaDims" class="span12 hidden"><div class="grid"><div class="span3"><label>Largo (m)</label><input id="largo" type="number" min="0" step="0.01" placeholder="Ej. 8.5"></div><div class="span3"><label>Ancho (m)</label><input id="ancho" type="number" min="0" step="0.01" placeholder="Ej. 5.2"></div><div class="span6"><div class="notice ok" id="areaCalc">Ingresa largo y ancho; la app calculará los m².</div></div></div></div>
+<div id="areaEst" class="span12 hidden"><div class="review"><b>📐 Te ayudo a estimar el área</b><div class="hint" style="margin:5px 0 10px">No necesitas saber los m². Responde lo que puedas y la app hará una estimación preliminar.</div><div class="grid"><div class="span3"><label>¿Qué espacio es?</label><select id="tipoEspacio"><option>Sala de reuniones</option><option>Lobby</option><option>Oficina</option><option>Comedor</option><option>Área abierta</option><option>Otro</option></select></div><div class="span3"><label>¿Qué tan amplio se siente?</label><select id="ajusteEspacio"><option value="0.85">Ajustado</option><option value="1" selected>Normal</option><option value="1.2">Amplio</option></select></div><div class="span3 estMeeting"><label>Personas en la mesa</label><select id="capMesa"><option value="4">4</option><option value="6">6</option><option value="8">8</option><option value="10">10</option><option value="12" selected>12</option><option value="16">16</option><option value="20">20+</option></select></div><div class="span3 estMeeting"><label>Sillas/muebles adicionales</label><input id="extrasSala" type="number" min="0" value="0"></div><div class="span3 estLobby hidden"><label>Escritorio / recepción</label><select id="tamRecepcion"><option value="1">Pequeño</option><option value="1.5" selected>Mediano</option><option value="2.2">Grande</option><option value="3">Muy grande / varios módulos</option></select></div><div class="span3 estLobby hidden"><label>Asientos para visitantes</label><input id="asientosLobby" type="number" min="0" value="0"></div><div class="span3 estWork hidden"><label>Puestos de trabajo aprox.</label><input id="puestosTrabajo" type="number" min="0" value="6"></div><div class="span3 estDining hidden"><label>Personas sentadas aprox.</label><input id="puestosComedor" type="number" min="0" value="12"></div><div class="span6"><label>¿Qué más hay?</label><input id="refEspacio" placeholder="Ej. sofá, credenza, mesa auxiliar... (opcional)"></div><div class="span12"><div id="areaEstResultado" class="notice ok">Responde las preguntas y aquí aparecerá el área estimada.</div></div></div></div><div class="notice" style="margin-top:8px">⚠️ Es una ayuda para cotización preliminar, no una medición arquitectónica. Si luego obtienes el plano o las medidas reales, puedes sustituir esta estimación.</div></div>
+<div class="span3"><label>¿Cómo calcular el tiempo?</label><select id="modoTiempo"><option value="auto">Que la app lo calcule</option><option value="manual">Ya conozco las horas</option></select></div>
+<div class="span2"><label>Personas</label><input id="cuadrilla" type="number" min="1" value="1"></div><div class="span2"><label>Horas de trabajo por persona</label><input id="horasManual" type="number" min="0" step="0.25" placeholder="Ej. 12" disabled></div><div class="span2"><label>Puesto</label><select id="puestoServicio"></select></div><div class="span2"><label>Jornada</label><select id="jornadaServicio"><option value="dia">Diurna</option><option value="mixta">Mixta</option><option value="nocturna">Nocturna</option></select></div><div class="span2"><label>Tipo de hora</label><select id="tipoHoraServicio"><option value="ord">Ordinaria</option><option value="extra">Extra 1.5</option><option value="doble">Doble</option></select></div><div class="span2"><label>Método / nota</label><input id="metodo" placeholder="Ej. extracción"></div>
+<div class="span12"><details><summary style="cursor:pointer;color:#9fd5ff">Opciones avanzadas de tiempo</summary><div class="grid" style="margin-top:10px"><div class="span3"><label>Rendimiento sugerido (solo referencia)</label><input id="rendimiento" type="number" min="0.01" step="0.01"></div><div class="span3"><label>Preparación + cierre (h)</label><input id="tiempoFijo" type="number" min="0" step="0.25" value="0"><div class="hint">Montaje, producto, mobiliario, bordes y recogida. Supuesto provisional editable.</div></div><div class="span3"><label>Duración mínima operativa (h)</label><input id="minhoras" type="number" min="0" step="0.25" value="0"><div class="hint">Evita que un trabajo pequeño se cotice como si solo existiera el paso de máquina.</div></div></div></details></div><div class="span12"><div id="previewServicio" class="notice ok">Selecciona el servicio y la app te guiará.</div></div><div class="span12"><div class="row"><button id="addServicio">+ Agregar y calcular cotización</button><button id="limpiarServicio" class="ghost" type="button">🧹 Limpiar servicio</button></div></div>
+</div><p class="hint">Si conoces las horas, indícalas y la app calcula el costo de inmediato. Si no las conoces, usa “Que la app lo calcule”; cuando exista un estándar validado lo propondrá automáticamente y, si todavía falta ese dato, te dirá exactamente qué necesitamos.</p>
+<div style="overflow:auto"><table><thead><tr><th>Servicio</th><th>Cantidad</th><th>Tiempo</th><th>Personas</th><th>Horas-persona</th><th>Tipo</th><th>Costo MO</th><th>Nota</th><th></th></tr></thead><tbody id="tablaServicios"></tbody></table></div></div>
+<div id="mano" class="tabpane hidden"><h2 class="section-title">Mano de obra</h2><div class="notice">Las tarifas base se tomaron del COM-F-04 2026 suministrado. En el piloto puedes cambiarlas en Configuración. La fecha de vigencia es configurable.</div><br><div class="grid">
+<div class="span3"><label>Puesto</label><select id="puesto"></select></div><div class="span2"><label>Jornada</label><select id="jornada"><option value="dia">Diurna</option><option value="mixta">Mixta</option><option value="nocturna">Nocturna</option></select></div><div class="span2"><label>Tipo de hora</label><select id="tipoHora"><option value="ord">Ordinaria</option><option value="extra">Extra 1.5</option><option value="doble">Doble</option></select></div><div class="span2"><label>Horas</label><input id="horasMO" type="number" min="0" step="0.25" value="1"></div><div class="span3"><button id="addMO">+ Agregar mano de obra</button></div>
+</div><div style="overflow:auto"><table><thead><tr><th>Puesto</th><th>Jornada</th><th>Tipo</th><th>Horas</th><th>Tarifa/h</th><th>Total</th><th></th></tr></thead><tbody id="tablaMO"></tbody></table></div></div>
+<div id="materiales" class="tabpane hidden"><h2 class="section-title">Materiales, productos y otros gastos</h2><div class="grid">
+<div class="span3"><label>Concepto</label><input id="matNombre" placeholder="Ej. Bonnet & Traffic"></div><div class="span2"><label>Categoría</label><select id="matCat"><option>Químico</option><option>Consumible</option><option>Equipo / alquiler</option><option>Transporte</option><option>Alimentación</option><option>Hospedaje</option><option>Subcontratado</option><option>Otro</option></select></div><div class="span2"><label>Cantidad</label><input id="matCant" type="number" min="0" step="0.01" value="1"></div><div class="span2"><label>Precio unitario ₡</label><input id="matPrecio" type="number" min="0" step="1" value="0"></div><div class="span3"><button id="addMat">+ Agregar costo</button></div>
+</div><div style="overflow:auto"><table><thead><tr><th>Concepto</th><th>Categoría</th><th>Cantidad</th><th>P. unitario</th><th>Total</th><th></th></tr></thead><tbody id="tablaMat"></tbody></table></div></div>
+<div id="config" class="tabpane hidden"><h2 class="section-title">Configuración editable</h2><div class="grid"><div class="span3"><label>Vigencia tarifario</label><input id="vigencia" type="date" value="2025-12-01"></div><div class="span3"><label>Margen comercial objetivo %</label><input id="margen" type="number" value="25" step="0.1"></div><div class="span3"><label>Descuento comercial %</label><input id="descuento" type="number" value="0" step="0.1"></div><div class="span3"><label>Precio manual negociado ₡ (opcional)</label><input id="precioManual" type="number" min="0" step="1" placeholder="Vacío = automático"></div></div><br><div class="check"><input id="guardar" type="checkbox" checked><label for="guardar" style="margin:0">Guardar borrador automáticamente en este dispositivo</label></div><p class="hint">En la versión Supabase, tarifas, productos, TDS/SDS, usuarios, revisiones y cotizaciones quedarán centralizados con permisos e historial.</p></div>
+</section>
+<section class="card span8"><h2 class="section-title">Resumen de cálculo</h2><div class="kpis"><div class="kpi"><small>Horas-persona técnicas</small><b id="kHoras">0.00</b></div><div class="kpi"><small>Mano de obra</small><b id="kMO" class="money">₡0</b></div><div class="kpi"><small>Materiales / gastos</small><b id="kMat" class="money">₡0</b></div><div class="kpi"><small>Precio propuesto</small><b id="kPrecio" class="money">₡0</b></div></div><br><details open><summary style="cursor:pointer;color:#9fd5ff;font-weight:700">Ver cálculo interno</summary><div id="desglose" style="margin-top:10px"></div></details><br><div id="alertas"></div></section>
+<section class="card span4"><h2 class="section-title">Acciones</h2><div class="row"><button id="duplicar" class="secondary">Duplicar</button><button id="limpiar" class="danger">➕ Nueva cotización</button></div><br><div class="row"><button id="exportar" class="ghost">Generar PDF / imprimir</button></div><p class="hint">Genera una vista presentable para imprimir o guardar como PDF. No muestra tarifas internas de mano de obra.</p></section>
+</div><div class="footer">LillyTech · Piloto local · Los estándares técnicos deben validarse antes de uso comercial definitivo.</div></div>
 <script>
-const TUTORIALS=[
-{one:{q:"Una reunión empieza a las 8:00 a. m. y termina a las 9:00 a. m. ¿A qué hora termina?",o:[["a","8:00 a. m."],["b","9:00 a. m."],["c","10:00 a. m."]],a:"b"},
- many:{q:"Marque TODAS las opciones que son formas escritas de comunicación.",o:[["a","Correo"],["b","Llamada"],["c","Mensaje escrito"]],a:["a","c"]},
- order:{q:"Ordene estos pasos.",items:[["hacer","Realizar la tarea"],["recibir","Recibir la solicitud"],["confirmar","Confirmar que terminó"]],a:["recibir","hacer","confirmar"]}},
-{one:{q:"Si una instrucción dice 'entregar antes de las 3:00 p. m.', ¿cuál hora todavía cumple?",o:[["a","2:30 p. m."],["b","3:30 p. m."],["c","4:00 p. m."]],a:"a"},
- many:{q:"Marque TODAS las opciones que sirven para dejar evidencia escrita.",o:[["a","Correo enviado"],["b","Documento guardado"],["c","Conversación verbal sin registro"]],a:["a","b"]},
- order:{q:"Ordene estos pasos.",items:[["guardar","Guardar el documento"],["revisar","Revisar que esté correcto"],["crear","Crear el documento"]],a:["crear","revisar","guardar"]}},
-{one:{q:"Si debe hacer una tarea hoy y otra mañana, ¿cuál debe atender primero?",o:[["a","La de mañana"],["b","La de hoy"],["c","Da igual"]],a:"b"},
- many:{q:"Marque TODAS las acciones que ayudan a confirmar una instrucción.",o:[["a","Leerla completa"],["b","Preguntar si algo no está claro"],["c","Adivinar lo que falta"]],a:["a","b"]},
- order:{q:"Ordene estos pasos.",items:[["cerrar","Confirmar que el caso quedó cerrado"],["resolver","Resolver la situación"],["identificar","Identificar el problema"]],a:["identificar","resolver","cerrar"]}}
-];
-
-const BANK={
-com:{code:"CP-01",title:"Comunicación Profesional",cases:[
-{case:"El cliente avisa que un área no quedó limpia como debía. Se corrige a las 9:35 a. m. Se confirma que en el primer recorrido esa área se pasó por alto. Se revisará otra vez a las 2:00 p. m.",q:[
-one("¿Cuál es la mejor forma de explicar lo ocurrido?",15,1,[["a","El compañero se equivocó, pero ya lo resolvimos."],["b","Se identificó una omisión en el recorrido inicial. El área fue atendida y quedó corregida a las 9:35 a. m."],["c","No sabemos qué pasó, pero ya está limpio."]],"b"),
-many("¿Qué cosas sí debe informar para dar seguimiento?",15,1,[["a","Acción realizada"],["b","Nombre del trabajador que cometió el error"],["c","Hora de nueva revisión"],["d","Confirmación posterior"]],["a","c","d"]),
-order("Ordene las partes del mensaje.",20,[["sit","Situación detectada"],["act","Acción realizada"],["cau","Causa confirmada"],["seg","Seguimiento"]],["sit","act","cau","seg"]),
-one("Si todavía no conoce la causa con seguridad, ¿qué debe decir?",25,1,[["a","La causa más probable"],["b","Que la causa está en revisión y dará seguimiento"],["c","Que fue culpa del turno anterior"]],"b"),
-one("¿Cuál es el mejor cierre?",25,0,[["a","Esperamos que no vuelva a pasar."],["b","Revisaremos nuevamente y confirmaremos el resultado."],["c","El colaborador será sancionado."]],"b")]},
-{case:"Un dispensador se quedó sin producto. Se repuso a las 10:20 a. m. La revisión mostró que ese día hubo más consumo de lo normal. Se acordó revisar nuevamente a la 1:00 p. m. y ajustar la frecuencia de reposición.",q:null},
-{case:"El cliente reporta que una sala no estaba lista a la hora acordada. El equipo la atiende de inmediato. Se identifica un cambio de última hora que no fue comunicado al equipo de limpieza. Se acuerda revisar el canal de avisos y confirmar la sala antes de la siguiente reunión.",q:null}]},
-doc:{code:"GD-01",title:"Gestión Documental",cases:[
-{case:"Para este caso: Capacitación = evidencia de asistencia o resultado. Control de horas = revisión mensual. Evaluación de proveedor = responsable Compras. Auditoría y control de activos también son controles del proyecto.",q:[
-one("¿Qué sirve como evidencia de una capacitación?",12,1,[["a","Registro de asistencia o resultado"],["b","Inventario"],["c","Evaluación de proveedor"]],"a"),
-one("¿Cuál control se revisa todos los meses?",12,0,[["a","Control de horas"],["b","Solo capacitación"],["c","Solo auditoría"]],"a"),
-one("¿Qué área es responsable de evaluar al proveedor?",12,1,[["a","RH"],["b","Compras"],["c","EHS"]],"b"),
-many("¿Cuáles sirven como control del proyecto?",16,0,[["a","Control de horas"],["b","Auditoría operativa"],["c","Control de activos"],["d","Ninguno"]],["a","b","c"]),
-one("Si falta la evidencia de una capacitación realizada, ¿qué debe hacer?",14,1,[["a","Cerrar igual"],["b","Buscar o solicitar la evidencia"],["c","Crear un registro sin verificar"]],"b"),
-one("Si un documento está vencido, ¿qué debe hacer?",14,1,[["a","Eliminarlo"],["b","Gestionar la actualización y mantener evidencia"],["c","Cambiar solo la fecha"]],"b"),
-order("Ordene el control de un documento.",20,[["req","Identificar qué se necesita"],["gen","Generar o recibir evidencia"],["val","Revisar que esté correcta y vigente"],["arc","Guardar donde corresponde"],["seg","Dar seguimiento a pendientes"]],["req","gen","val","arc","seg"])]},
-{case:"Para este caso: Control de asistencia = evidencia mensual. Inventario de activos = debe estar actualizado. Capacitación = requiere evidencia. Documento vencido = debe gestionarse, no borrarse.",q:null},
-{case:"Para este caso: Cada documento tiene responsable, frecuencia y evidencia. Un registro sin evidencia no se considera completo. Los pendientes deben tener seguimiento hasta cierre.",q:null}]},
-excel:{code:"EX-01",title:"Excel Operativo",cases:[
-{case:"Use la hoja 'Caso A' del archivo de Excel.",excel:"Caso A",q:[num("¿Cuántas personas de MCK aparecen?",20,5),text("¿Quién tiene más horas en MCK?",20,"José"),num("¿Cuántas capacitaciones tiene pendientes Carlos?",20,2),num("¿Qué porcentaje de capacitación tiene José? Escriba solo el número, sin %.",20,80),one("Si quiere ver únicamente MCK, ¿qué herramienta de Excel usaría?",20,1,[["a","Filtro"],["b","Color de letra"],["c","Combinar celdas"]],"a")]},
-{case:"Use la hoja 'Caso B' del archivo de Excel.",excel:"Caso B",q:[num("¿Cuántas personas de DXC aparecen?",20,4),text("¿Quién tiene más horas en DXC?",20,"Felipe"),num("¿Cuántas capacitaciones tiene pendientes Mario?",20,1),num("¿Qué porcentaje de capacitación tiene Felipe? Escriba solo el número, sin %.",20,40),one("Para ordenar las horas de mayor a menor, ¿qué usaría?",20,1,[["a","Ordenar"],["b","Subrayar"],["c","Combinar"]],"a")]},
-{case:"Use la hoja 'Caso C' del archivo de Excel.",excel:"Caso C",q:[num("¿Cuántas personas de LSEG aparecen?",20,4),text("¿Quién tiene más horas en LSEG?",20,"Paula"),num("¿Cuántas capacitaciones tiene pendientes Irene?",20,1),num("¿Qué porcentaje de capacitación tiene Karla? Escriba solo el número, sin %.",20,57.14,2),one("Para encontrar solo un proyecto en una tabla, ¿qué herramienta ayuda?",20,1,[["a","Filtro"],["b","Negrita"],["c","Borde"]],"a")]}]},
-kpi:{code:"KP-01",title:"Indicadores y Plan de Acción",cases:[
-{case:"Quality: enero 95%, febrero 92%, marzo 88%. Meta 93%. CSAT: 4.6, 4.3, 3.9. Ausentismo: 3%, 5%, 8%.",q:[
-one("¿Cuál es la señal más importante?",25,1,[["a","Hay deterioro simultáneo de calidad, satisfacción y ausentismo"],["b","Marzo es un dato aislado"],["c","Todo está estable"]],"a"),
-many("¿Qué debería investigar antes de definir la acción?",25,1,[["a","Cobertura y ausencias"],["b","Hallazgos repetitivos de calidad"],["c","Comentarios del cliente"],["d","Cambiar la meta"]],["a","b","c"]),
-one("¿Cuál plan es más sólido?",25,1,[["a","Causa + acción + responsable + fecha + indicador de verificación"],["b","Pedir al equipo que se esfuerce más"],["c","Esperar otro trimestre"]],"a"),
-one("¿Cuándo se cierra la acción?",25,0,[["a","Cuando se ejecuta"],["b","Cuando se verifica que produjo el resultado esperado"],["c","Cuando se envía el correo"]],"b")]},
-{case:"Quality permanece en 96%, pero las quejas suben de 2 a 9 por mes y 6 se relacionan con tiempos de respuesta. La auditoría tradicional no mide tiempo de respuesta.",q:[
-one("¿Qué indica esta información?",25,1,[["a","El KPI de calidad no captura por sí solo toda la experiencia del cliente"],["b","No hay problema porque Quality está verde"],["c","Las quejas deben ignorarse"]],"a"),
-one("¿Qué haría primero?",25,1,[["a","Analizar las 9 quejas y medir tiempo de respuesta"],["b","Bajar la meta de Quality"],["c","Eliminar el registro de quejas"]],"a"),
-many("¿Qué podría añadirse al seguimiento?",25,1,[["a","Tiempo promedio de respuesta"],["b","Reincidencia"],["c","Cierre confirmado por cliente"],["d","Número de páginas del reporte"]],["a","b","c"]),
-one("¿Qué principio aplica?",25,0,[["a","Usar varios indicadores para entender el desempeño"],["b","Un KPI verde invalida cualquier otra señal"],["c","Solo importa el promedio anual"]],"a")]},
-{case:"La meta de capacitación es 95%. El site reporta 98%, pero al revisar 10 expedientes, 3 no tienen evidencia válida de finalización.",q:[
-one("¿Qué debe hacer con el 98% reportado?",25,1,[["a","Aceptarlo porque supera meta"],["b","Validar integridad de la evidencia antes de considerarlo confiable"],["c","Subirlo a 100%"]],"b"),
-num("En la muestra de 10 expedientes, ¿qué porcentaje tiene evidencia válida?",25,70,.5),
-one("¿Cuál es el riesgo principal?",25,1,[["a","Decidir con un indicador cuya fuente no está controlada"],["b","Tener demasiados expedientes"],["c","Que el porcentaje sea impar"]],"a"),
-one("¿Qué acción corresponde?",25,0,[["a","Corregir registros, determinar causa y reforzar el control de evidencia"],["b","Cambiar la meta"],["c","No revisar más"]],"a")]}]},
-iso:{code:"QA-01",title:"Calidad e ISO 9001",cases:[
-isoCase("Una capacitación se realizó, pero nadie guardó la evidencia."),
-isoCase("Un formato nuevo se está usando, pero el proyecto conserva también copias viejas sin identificar."),
-isoCase("Un indicador bajó por debajo de la meta y nadie documentó qué acción se tomó.")]},
-admin:{code:"AD-01",title:"Administración del Proyecto",cases:[
-adminCase("Dos personas trabajaron horas diferentes a las programadas. El cierre de horas vence hoy."),
-adminCase("Llegó mercadería y todavía no se verificó contra el pedido."),
-adminCase("Un activo aparece asignado a una persona que ya no trabaja en el proyecto.")]},
-fin:{code:"FI-01",title:"Presupuesto y Control Financiero",cases:[
-{case:"Presupuesto mensual ₡2.400.000. Mano de obra presupuestada ₡1.500.000 y gasto real ₡1.620.000. Suministros presupuestados ₡500.000 y gasto real ₡470.000. Otros costos presupuestados ₡400.000 y gasto real ₡405.000.",q:[
-num("¿Cuál es la desviación total contra el presupuesto? Escriba exceso como número positivo.",25,95000,1),
-one("¿Cuál rubro explica principalmente la desviación?",25,1,[["a","Mano de obra"],["b","Suministros"],["c","Otros costos"]],"a"),
-one("Antes de reducir horas, ¿qué análisis es más responsable?",25,1,[["a","Revisar OT, cobertura, ausencias, productividad y obligaciones del scope"],["b","Congelar nuevas horas extra y redistribuir turnos antes de revisar las causas"],["c","Compensar el exceso de mano de obra reduciendo compras no críticas del mes"]],"a"),
-one("¿Qué debe llevar el reporte al PM/cliente interno?",25,0,[["a","Variación, causa sustentada, impacto y acción con seguimiento"],["b","Variación y acción correctiva propuesta, dejando la causa para el cierre mensual"],["c","Variación total y comparación contra el mes anterior, sin separar rubros"]],"a")]},
-{case:"El presupuesto de suministros es ₡800.000. Al día 20 se han consumido ₡690.000 y el promedio de los últimos tres meses fue ₡760.000. Este mes hubo una actividad extraordinaria del cliente.",q:[
-one("¿Cuál es la mejor primera acción?",25,1,[["a","Proyectar cierre y separar consumo normal del extraordinario"],["b","Restringir temporalmente consumos no críticos y esperar una semana para proyectar"],["c","Solicitar de inmediato una ampliación presupuestaria por la actividad extraordinaria"]],"a"),
-num("¿Cuánto presupuesto queda disponible al día 20?",25,110000,1),
-many("¿Qué información ayuda a explicar la variación?",25,1,[["a","Consumo por categoría"],["b","Actividad extraordinaria"],["c","Inventario disponible"],["d","Color del reporte"]],["a","b","c"]),
-one("Si la proyección supera presupuesto, ¿qué corresponde?",25,0,[["a","Informar temprano, sustentar causa y proponer acción"],["b","Ocultarlo hasta cierre"],["c","Modificar registros"]],"a")]},
-{case:"El site está dentro del presupuesto total, pero OT está 22% sobre plan y suministros 18% por debajo. La calidad cayó dos puntos durante el mismo período.",q:[
-one("¿Es suficiente decir que el presupuesto total está en verde?",25,1,[["a","Sí"],["b","No, hay que analizar las variaciones internas y su impacto"]],"b"),
-many("¿Qué relaciones debería investigar?",25,1,[["a","OT y ausentismo/cobertura"],["b","Menor consumo y calidad"],["c","Productividad y carga de trabajo"],["d","Solo el total presupuestario"]],["a","b","c"]),
-one("¿Qué sería una mala decisión?",25,1,[["a","Reducir suministros automáticamente porque están bajo presupuesto"],["b","Validar causas antes de actuar"],["c","Revisar tendencia de calidad"]],"a"),
-one("¿Qué demuestra mejor control financiero?",25,0,[["a","Entender causa, impacto operacional y acción, no solo el saldo"],["b","Gastar exactamente todo el presupuesto"],["c","Evitar reportar variaciones"]],"a")]}]},
-people:{code:"PE-01",title:"Personas y Onboarding",cases:[
-peopleCase("Mañana ingresa una persona nueva. La validación previa ya fue aprobada, pero todavía no ha realizado la inducción."),
-peopleCase("Una persona completó la inducción, pero no alcanzó la nota mínima."),
-peopleCase("Un trabajador aparece activo, pero no tiene registrada una capacitación obligatoria.")]},
-lead:{code:"LI-01",title:"Liderazgo y Priorización",cases:[
-{case:"8:00 a. m.: (A) un colaborador reporta olor fuerte y mareo después de usar un químico; (B) el cliente espera respuesta a una queja de ayer antes de las 9:00; (C) faltan dos personas; (D) el reporte mensual vence a las 10:00.",q:[
-order("Ordene la prioridad inicial.",40,[["a","Atender la posible exposición y controlar el riesgo"],["b","Asegurar cobertura mínima y redistribuir operación"],["c","Confirmar al cliente que la queja está en seguimiento y dar hora de respuesta"],["d","Completar el reporte mensual"]],["a","b","c","d"]),
-one("¿Qué NO debería hacer personalmente si puede delegarlo?",20,1,[["a","Toda la redistribución y además cada tarea operativa"],["b","Asegurar que haya responsable y verificar cobertura"],["c","Escalar la situación de seguridad según proceso"]],"a"),
-many("¿Qué debe comunicar temprano?",20,1,[["a","Impactos que puedan afectar al cliente"],["b","Necesidades de cobertura"],["c","Situación de seguridad según protocolo"],["d","Nada hasta tener todo resuelto"]],["a","b","c"]),
-one("¿Qué demuestra buena priorización?",20,0,[["a","Atender riesgo/continuidad, delegar y proteger compromisos críticos"],["b","Hacer primero lo más rápido"],["c","Resolver todo personalmente"]],"a")]},
-{case:"En 30 minutos inicia una visita ejecutiva. Al mismo tiempo: (A) hay agua en una zona de paso; (B) falta papel en un baño cercano a la visita; (C) una persona pide hablar por un conflicto no urgente; (D) Compras solicita una confirmación que vence al final del día.",q:[
-order("Ordene la prioridad.",40,[["a","Controlar/señalizar el riesgo de caída"],["b","Restablecer el baño crítico para la visita"],["c","Acordar hora cercana para atender el conflicto"],["d","Responder a Compras dentro del plazo"]],["a","b","c","d"]),
-one("¿Qué conviene delegar de inmediato si hay personal competente?",20,1,[["a","Reposición del baño mientras usted verifica el riesgo"],["b","La decisión sobre un incidente grave"],["c","Toda comunicación con el cliente sin contexto"]],"a"),
-one("¿Qué error de liderazgo sería común?",20,1,[["a","Quedarse resolviendo personalmente la reposición y perder visión del conjunto"],["b","Asignar responsables"],["c","Confirmar cierre"]],"a"),
-one("Después de estabilizar lo urgente, ¿qué sigue?",20,0,[["a","Recuperar pendientes, confirmar responsables y dar seguimiento"],["b","Olvidar lo demás"],["c","Crear más tareas sin revisar"]],"a")]},
-{case:"Un viernes al cierre: (A) un empleado informa que mañana no podrá asistir; (B) el cliente pide una limpieza extraordinaria para mañana que podría estar fuera de scope; (C) inventario muestra producto crítico para solo un día; (D) hay archivos administrativos por ordenar sin fecha límite.",q:[
-order("Ordene la gestión inicial.",40,[["a","Asegurar continuidad: cobertura y producto crítico"],["b","Verificar alcance/recursos de la solicitud extraordinaria y responder al cliente"],["c","Confirmar plan del turno siguiente"],["d","Ordenar archivos administrativos"]],["a","b","c","d"]),
-many("¿Qué puede requerir escalamiento?",20,1,[["a","Falta de producto crítico"],["b","Servicio fuera de scope"],["c","Cobertura si no existe reemplazo"],["d","Orden de archivos"]],["a","b","c"]),
-one("¿Qué no debe prometer al cliente antes de validar?",20,1,[["a","Un servicio adicional con recursos/alcance no confirmados"],["b","Una hora para darle respuesta"],["c","Que revisará la solicitud"]],"a"),
-one("¿Qué criterio domina el orden?",20,0,[["a","Riesgo + continuidad + compromiso con cliente + vencimiento"],["b","Preferencia personal"],["c","Orden de llegada únicamente"]],"a")]}]},
-ai:{code:"AI-01",title:"IA Aplicada y Uso Responsable",cases:[
-aiCase("Necesita ayuda para redactar un plan de acción a partir de un hallazgo."),
-aiCase("Quiere resumir una tabla con resultados mensuales antes de preparar un reporte."),
-aiCase("Necesita mejorar un correo profesional para un cliente.")]}
+const money=n=>new Intl.NumberFormat('es-CR',{style:'currency',currency:'CRC',maximumFractionDigits:0}).format(n||0);
+const rates={
+"Misceláneos":{dia:{ord:2288.0441,extra:3432.06615,doble:6864.1323},mixta:{ord:2614.90754,extra:3922.36132,doble:7844.72263},nocturna:{ord:3050.72547,extra:4576.0882,doble:9152.1764}},
+"Líderes Custodial":{dia:{ord:2811.53302,extra:4217.29952,doble:8434.59905},mixta:{ord:3213.18059,extra:4819.77088,doble:9639.54177},nocturna:{ord:3748.71069,extra:5623.06603,doble:11246.13206}},
+"Supervisores Custodial":{dia:{ord:3159.03404,extra:4738.55107,doble:9477.10213},mixta:{ord:3610.32462,extra:5415.48693,doble:10830.97387},nocturna:{ord:4212.04539,extra:6318.06809,doble:12636.13618}},
+"Coordinador Custodial":{dia:{ord:3554.53933,extra:5331.80899,doble:10663.61799},mixta:{ord:4062.33066,extra:6093.49599,doble:12186.99199},nocturna:{ord:4739.38577,extra:7109.07866,doble:14218.15732}},
+"Ayudante de Mantenimiento":{dia:{ord:2288.04407,extra:3432.06611,doble:6864.13221},mixta:{ord:2614.90751,extra:3922.36126,doble:7844.72253},nocturna:{ord:3050.72543,extra:4576.08814,doble:9152.17628}},
+"Operario Mantenimiento":{dia:{ord:3116.22988,extra:4674.34481,doble:9348.68962},mixta:{ord:3561.40557,extra:5342.10836,doble:10684.21671},nocturna:{ord:4154.97317,extra:6232.45975,doble:12464.9195}},
+"Técnico Mantenimiento":{dia:{ord:3490.17746,extra:5235.26619,doble:10470.53238},mixta:{ord:3988.77424,extra:5983.16136,doble:11966.32272},nocturna:{ord:4653.56995,extra:6980.35492,doble:13960.70984}},
+"Técnico Mantenimiento Especializado":{dia:{ord:3857.10475,extra:5785.65713,doble:11571.31426},mixta:{ord:4408.11972,extra:6612.17957,doble:13224.35915},nocturna:{ord:5142.80634,extra:7714.2095,doble:15428.41901}}
 };
-
-// Reuse first question structure for equivalent communication/document cases, while case text changes.
-BANK.com.cases[1].q=JSON.parse(JSON.stringify(BANK.com.cases[0].q));
-BANK.com.cases[2].q=JSON.parse(JSON.stringify(BANK.com.cases[0].q));
-BANK.doc.cases[1].q=JSON.parse(JSON.stringify(BANK.doc.cases[0].q));
-BANK.doc.cases[2].q=JSON.parse(JSON.stringify(BANK.doc.cases[0].q));
-
-function one(x,p,c,o,a){return{t:"one",x,p,c,o,a}}
-function many(x,p,c,o,a){return{t:"many",x,p,c,o,a}}
-function order(x,p,o,a){return{t:"order",x,p,o,a}}
-function num(x,p,a,tol=0){return{t:"num",x,p,a,tol}}
-function text(x,p,a){return{t:"text",x,p,a}}
-function simpleKpi(txt,result,goal){return{case:txt,q:[
-num("¿Cuál es el porcentaje de cumplimiento? Escriba solo el número.",25,result,.5),
-one("¿Cumple la meta?",25,1,[["a","Sí"],["b","No"]],result>=goal?"a":"b"),
-one("¿Qué debe hacer si NO cumple?",25,1,[["a","Analizar la causa y definir acción"],["b","Cambiar la meta"],["c","No hacer nada"]],"a"),
-order("Ordene el seguimiento correcto.",25,[["rev","Revisar resultado"],["causa","Buscar la causa"],["accion","Definir acción"],["seg","Dar seguimiento"]],["rev","causa","accion","seg"])]}}
-function isoCase(txt){return{case:txt,q:[
-one("¿Qué es lo primero que debe hacer?",25,1,[["a","Ignorarlo"],["b","Revisar el requisito y la evidencia que falta"],["c","Borrar el registro"]],"b"),
-one("¿Por qué importa la evidencia?",25,1,[["a","Porque demuestra lo que se hizo"],["b","Solo para llenar carpetas"],["c","No importa"]],"a"),
-one("Si encuentra un documento viejo, ¿qué debe hacer?",25,1,[["a","Usarlo igual"],["b","Verificar cuál versión está vigente"],["c","Cambiarle la fecha"]],"b"),
-one("¿Qué busca la mejora continua?",25,0,[["a","Repetir siempre lo mismo"],["b","Corregir y mejorar los procesos"],["c","Eliminar controles"]],"b")]}}
-function adminCase(txt){return{case:txt,q:[
-one("¿Qué debe hacer primero?",25,1,[["a","Verificar la información real"],["b","Completar de memoria"],["c","Dejarlo para otro mes"]],"a"),
-one("¿Qué debe conservar?",25,1,[["a","La evidencia del control"],["b","Solo una explicación verbal"],["c","Nada"]],"a"),
-one("Si encuentra una diferencia, ¿qué corresponde?",25,1,[["a","Ocultarla"],["b","Revisarla y corregir con trazabilidad"],["c","Cambiar el dato sin revisar"]],"b"),
-one("¿Cuándo se considera cerrado?",25,0,[["a","Cuando la información está verificada y registrada"],["b","Cuando alguien dice que está listo"],["c","Cuando se borra el pendiente"]],"a")]}}
-function finCase(budget,spent,balance){return{case:`Presupuesto del mes: ₡${budget.toLocaleString("es-CR")}. Gasto registrado: ₡${spent.toLocaleString("es-CR")}.`,q:[
-num("¿Cuál es el saldo disponible? Si hay exceso, escriba el número negativo.",35,balance,1),
-one("¿Está dentro del presupuesto?",25,1,[["a","Sí"],["b","No"]],balance>=0?"a":"b"),
-one("Si hay una desviación importante, ¿qué debe hacer?",20,1,[["a","Revisar la causa y documentar"],["b","Ignorarla"],["c","Cambiar el presupuesto sin autorización"]],"a"),
-one("¿Qué dato debe validar antes de reportar?",20,0,[["a","Que los gastos estén completos y correctos"],["b","Solo el color de la hoja"],["c","Nada"]],"a")]}}
-function peopleCase(txt){return{case:txt,q:[
-one("¿Qué debe hacer?",30,1,[["a","Continuar sin revisar"],["b","Completar el paso pendiente antes de cerrar el proceso"],["c","Marcarlo completo"]],"b"),
-one("¿Por qué se guarda evidencia?",25,1,[["a","Para demostrar que el proceso se cumplió"],["b","Solo por costumbre"],["c","No hace falta"]],"a"),
-one("Si la persona no cumple un requisito obligatorio, ¿qué corresponde?",25,1,[["a","Ocultarlo"],["b","Gestionar el requisito antes de darlo por cumplido"],["c","Cambiar el requisito"]],"b"),
-one("¿Qué ayuda a evitar errores?",20,0,[["a","Usar una lista de verificación"],["b","Confiar solo en memoria"],["c","Saltar pasos"]],"a")]}}
-function leadCase(txt){return{case:txt,q:[
-one("¿Qué debe atender primero?",30,1,[["a","Lo que tenga mayor riesgo o impacto inmediato"],["b","Lo más fácil"],["c","Lo que más le guste"]],"a"),
-many("¿Qué debe considerar para priorizar?",25,0,[["a","Seguridad"],["b","Impacto al cliente"],["c","Fecha límite"],["d","Preferencia personal"]],["a","b","c"]),
-one("Si no puede resolver todo solo, ¿qué debe hacer?",25,1,[["a","No decir nada"],["b","Delegar o escalar correctamente"],["c","Dejar todo pendiente"]],"b"),
-one("¿Qué debe hacer después de atender lo urgente?",20,0,[["a","Revisar los demás pendientes y dar seguimiento"],["b","Irse"],["c","Olvidar el resto"]],"a")]}}
-function aiCase(txt){return{case:txt,q:[
-one("¿Cuál es un buen uso de IA en este caso?",25,0,[["a","Pedir un borrador y luego revisarlo"],["b","Copiar cualquier respuesta sin revisar"],["c","Dejar que la IA tome la decisión final"]],"a"),
-one("¿Qué debe hacer con datos confidenciales?",25,1,[["a","Compartir todo"],["b","Seguir la política de la empresa y evitar datos sensibles no autorizados"],["c","Publicarlos"]],"b"),
-one("¿Quién es responsable del resultado final?",25,1,[["a","La IA"],["b","La persona que usa y valida la información"],["c","Nadie"]],"b"),
-one("Si la IA da un dato dudoso, ¿qué debe hacer?",25,1,[["a","Usarlo igual"],["b","Verificarlo antes de usarlo"],["c","Inventar otro"]],"b")]}}
-
-
-BANK.client={code:"CL-01",title:"Gestión del Cliente",cases:[
-{case:"El cliente reporta una falla de calidad y solicita saber qué ocurrió y cómo se evitará que se repita.",q:[one("¿Qué debe hacer primero?",25,1,[["a","Defender al equipo"],["b","Confirmar hechos, atender la necesidad y reconocer la solicitud"],["c","Prometer que nunca volverá a pasar"]],"b"),many("¿Qué debe incluir el seguimiento?",25,1,[["a","Acción inmediata"],["b","Causa confirmada o estado de investigación"],["c","Responsable y fecha de seguimiento"],["d","Opiniones personales sobre el colaborador"]],["a","b","c"]),one("Si la solicitud está fuera del alcance contractual, ¿qué corresponde?",25,1,[["a","Prometerla de inmediato"],["b","Verificar alcance y escalar/gestionar aprobación antes de comprometer recursos"],["c","Ignorarla"]],"b"),one("¿Cuándo se considera cerrado el caso?",25,0,[["a","Cuando se envía el primer correo"],["b","Cuando se ejecuta, verifica y confirma al cliente"],["c","Cuando termina el turno"]],"b")]},
-{case:"Durante una reunión, el cliente pide un servicio adicional para el día siguiente. No está claro si está incluido en el contrato.",q:null},{case:"El cliente vuelve a reportar una situación que ya había sido atendida la semana anterior.",q:null}]};
-BANK.safety={code:"EH-01",title:"Seguridad / EHS",cases:[
-{case:"Durante un recorrido encuentra piso mojado sin señalización, un químico sin identificar y una persona trabajando sin el PPE requerido.",q:[order("Ordene la respuesta inicial.",25,[["control","Controlar el riesgo inmediato"],["protect","Proteger a las personas / señalizar"],["report","Reportar según procedimiento"],["follow","Dar seguimiento y documentar"]],["control","protect","report","follow"]),many("¿Cuáles situaciones requieren acción?",25,1,[["a","Piso mojado sin señalización"],["b","Químico sin identificar"],["c","Falta de PPE"],["d","Ninguna si no hubo accidente"]],["a","b","c"]),one("Si ocurre un near miss, ¿qué corresponde?",25,1,[["a","No reportarlo porque nadie se lesionó"],["b","Reportarlo y analizarlo según el proceso aplicable"],["c","Esperar a que ocurra un accidente"]],"b"),one("¿Cuál es el objetivo principal?",25,0,[["a","Encontrar culpables"],["b","Eliminar/controlar riesgos y prevenir recurrencia"],["c","Evitar documentación"]],"b")]},{case:"Un colaborador quiere usar un producto químico en un área pero la etiqueta no es legible.",q:null},{case:"Se detecta una extensión eléctrica atravesando una zona de circulación durante una tarea urgente.",q:null}]};
-BANK.ops={code:"OP-01",title:"Gestión Operativa",cases:[
-{case:"Al iniciar el turno faltan dos personas. Hay una visita importante a las 9:00 a. m., un área crítica pendiente y varias tareas rutinarias.",q:[one("¿Qué debe hacer primero?",25,1,[["a","Mantener todas las asignaciones sin cambios"],["b","Repriorizar según criticidad, compromisos y recursos disponibles"],["c","Suspender todo el turno"]],"b"),many("¿Qué información necesita para reorganizar?",25,1,[["a","Scope/frecuencias"],["b","Personal disponible y habilidades"],["c","Áreas y horarios críticos"],["d","Preferencias personales"]],["a","b","c"]),order("Ordene el ciclo operativo.",25,[["assess","Evaluar situación y prioridades"],["assign","Redistribuir recursos"],["verify","Verificar ejecución"],["close","Documentar/escalar pendientes"]],["assess","assign","verify","close"]),one("Si no puede cubrir todo el alcance, ¿qué corresponde?",25,1,[["a","Ocultarlo"],["b","Escalar oportunamente con impacto y plan de contingencia"],["c","Marcar todo como completado"]],"b")]},{case:"Una máquina crítica queda fuera de servicio en medio del turno y afecta la ruta planificada.",q:null},{case:"El consumo de suministros sube de forma inesperada y existe riesgo de quedarse sin producto antes del siguiente pedido.",q:null}]};
-BANK.scope={code:"SC-01",title:"Gestión Contractual y Scope",cases:[
-{case:"El contrato indica una frecuencia semanal para una tarea. El cliente solicita verbalmente que se haga diariamente a partir de mañana.",q:[one("¿Cuál es la primera acción correcta?",25,1,[["a","Cambiar la frecuencia sin registrar nada"],["b","Verificar el alcance y documentar la solicitud"],["c","Negarse automáticamente"]],"b"),many("Antes de comprometer el cambio, ¿qué debe revisar?",25,1,[["a","Impacto en recursos/horas"],["b","Alcance contractual"],["c","Proceso de aprobación aplicable"],["d","Solo si al equipo le gusta la tarea"]],["a","b","c"]),one("Si se aprueba un cambio de alcance, ¿qué conviene actualizar?",25,1,[["a","Rutas/tareas, responsables y evidencia aplicable"],["b","Nada"],["c","Solo un mensaje informal"]],"a"),one("¿Por qué importa controlar trabajos fuera de scope?",25,0,[["a","Porque pueden afectar recursos, costos y cumplimiento"],["b","Porque nunca se debe ayudar al cliente"],["c","No importa"]],"a")]},{case:"Un área nueva comienza a utilizarse, pero todavía no aparece en las rutas ni en el alcance operativo configurado.",q:null},{case:"Un proveedor externo deja de ejecutar una tarea y el cliente pregunta si SBM puede asumirla temporalmente.",q:null}]};
-// Los casos 2 y 3 de las nuevas competencias reutilizan preguntas equivalentes para conservar comparabilidad.
-["client","safety","ops","scope"].forEach(k=>{let base=BANK[k].cases[0].q;BANK[k].cases.forEach((c,i)=>{if(i&&c.q===null)c.q=base.map(q=>JSON.parse(JSON.stringify(q)))})});
-
-let S=null,T=null;
-const $=id=>document.getElementById(id);
-function E(s){return String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]))}
-function show(id){["inicio","tutorial","test","result","profile","dashboard","history","config"].forEach(x=>$(x).classList.add("hidden"));$(id).classList.remove("hidden");if(id==="profile")profile();if(id==="dashboard")dashboard();if(id==="history")history();if(id==="config")config()}
-function start(forceTutorial=false){let n=$("nombre").value.trim(),c=$("codigo").value.trim();if(!n||!c){alert("Escriba nombre y cédula o código.");return}let k=$("inst").value,b=BANK[k],ci=Math.floor(Math.random()*b.cases.length);S={n,c,p:$("proyecto").value.trim(),role:$("role").value,k,b,ci,case:b.cases[ci]};let already=getHist().some(r=>r.code===c)||localStorage.getItem("sbm_tutorial_"+c)==="1";if(already&&!forceTutorial){openTest();return}T=TUTORIALS[Math.floor(Math.random()*TUTORIALS.length)];renderTutorial();show("tutorial")}
-function renderTutorial(){let x=T; $("tutorialBody").innerHTML=`
-<div class=q><h3>1. Una sola respuesta</h3><p>${E(x.one.q)}</p>${x.one.o.map(v=>`<label class=opt><input type=radio name=t1 value=${v[0]}>${E(v[1])}</label>`).join("")}<div id=f1></div></div>
-<div class=q><h3>2. Puede marcar varias</h3><p><strong>Marque TODAS las correctas.</strong> ${E(x.many.q)}</p>${x.many.o.map(v=>`<label class=opt><input type=checkbox name=t2 value=${v[0]}>${E(v[1])}</label>`).join("")}<div id=f2></div></div>
-<div class=q><h3>3. Ordenar</h3><div class=notice><strong>Los pasos están mezclados.</strong> Ponga 1 a lo primero, 2 a lo siguiente y continúe.</div>${shuffle(x.order.items).map(v=>`<div class=grid style="margin:7px 0"><div>${E(v[1])}</div><select name="to_${v[0]}"><option value="">Número</option>${x.order.items.map((_,j)=>`<option>${j+1}</option>`).join("")}</select></div>`).join("")}<div id=f3></div></div>`;$("btnReal").classList.add("hidden")}
-function checkTutorial(){let a=document.querySelector('input[name=t1]:checked'),m=[...document.querySelectorAll('input[name=t2]:checked')].map(x=>x.value).sort();let o=T.order.items.map(v=>[v[0],+document.querySelector(`select[name="to_${v[0]}"]`).value]);let ordered=o.every(x=>x[1])?o.sort((a,b)=>a[1]-b[1]).map(x=>x[0]):[];let x=a&&a.value===T.one.a,y=JSON.stringify(m)===JSON.stringify([...T.many.a].sort()),z=JSON.stringify(ordered)===JSON.stringify(T.order.a);$("f1").textContent=x?"✅ Bien":"❌ Revise esta respuesta.";$("f2").textContent=y?"✅ Bien":"❌ Recuerde marcar todas las correctas.";$("f3").textContent=z?"✅ Bien":"❌ Revise el orden." ;if(x&&y&&z)$("btnReal").classList.remove("hidden")}
-function openTest(){if(S&&S.c)localStorage.setItem("sbm_tutorial_"+S.c,"1");show("test");$("code").textContent=S.b.code+" V6.3 · Caso "+(S.ci+1);$("title").textContent=S.b.title;$("caseBox").textContent=S.case.case;$("extraBox").innerHTML=S.k==="excel"?`<div class=notice><strong>Prueba práctica de Excel.</strong> Abra el archivo y use únicamente la hoja <strong>${E(S.case.excel)}</strong>. Haga los cálculos en Excel y escriba aquí los resultados.<br><br><a href="Prueba_Excel_Casos.xlsx" download>📊 Descargar archivo de Excel</a></div>`:"";renderQs()}
-function shuffle(a){if(a.length<2)return [...a];let o;do{o=[...a].sort(()=>Math.random()-.5)}while(o.every((x,i)=>x[0]===a[i][0]));return o}
-function renderQs(){$("qs").innerHTML="";S.case.q.forEach((q,i)=>{q.id="q"+i;let h=`<div class=q><h3>${i+1}. ${E(q.x)}</h3><div class=small>${q.p} puntos</div>`;if(q.t==="one")h+=q.o.map(v=>`<label class=opt><input type=radio name=${q.id} value=${v[0]}>${E(v[1])}</label>`).join("");if(q.t==="many")h+=`<div class=notice><strong>Puede haber más de una correcta. Marque TODAS las que correspondan.</strong></div>`+q.o.map(v=>`<label class=opt><input type=checkbox name=${q.id} value=${v[0]}>${E(v[1])}</label>`).join("");if(q.t==="order")h+=`<div class=notice><strong>Los pasos están mezclados.</strong> Ponga 1 a lo primero, 2 a lo siguiente y continúe.</div>`+shuffle(q.o).map(v=>`<div class=grid style="margin:7px 0"><div>${E(v[1])}</div><select name="${q.id}_${v[0]}"><option value="">Número</option>${q.o.map((_,j)=>`<option>${j+1}</option>`).join("")}</select></div>`).join("");if(q.t==="num")h+=`<input type=number step=any name=${q.id} placeholder="Escriba el resultado">`;if(q.t==="text")h+=`<input type=text name=${q.id} placeholder="Escriba la respuesta">`;h+="</div>";$("qs").insertAdjacentHTML("beforeend",h)})}
-function answer(q){if(q.t==="one"){let x=document.querySelector(`input[name=${q.id}]:checked`);return x?x.value:null}if(q.t==="many")return [...document.querySelectorAll(`input[name=${q.id}]:checked`)].map(x=>x.value).sort();if(q.t==="order"){let p=q.o.map(v=>[v[0],+document.querySelector(`select[name="${q.id}_${v[0]}"]`).value]);if(p.some(x=>!x[1]))return null;return p.sort((a,b)=>a[1]-b[1]).map(x=>x[0])}let e=document.querySelector(`[name=${q.id}]`);return e?e.value.trim():null}
-function score(q,a){if(q.t==="one"){let ok=a===q.a;return{e:ok?q.p:0,r:ok?1:0}}if(q.t==="many"){let each=q.p/q.a.length,s=0;q.a.forEach(v=>{if(a.includes(v))s+=each});a.forEach(v=>{if(!q.a.includes(v))s-=each});s=Math.max(0,Math.min(q.p,s));return{e:Math.round(s),r:s/q.p}}if(q.t==="order"){let hits=0;q.a.forEach((v,i)=>{if(a[i]===v)hits++});return{e:Math.round(q.p*hits/q.a.length),r:hits/q.a.length,h:hits,z:q.a.length}}if(q.t==="num"){let v=Number(a),ok=Number.isFinite(v)&&Math.abs(v-q.a)<=q.tol;return{e:ok?q.p:0,r:ok?1:0}}if(q.t==="text"){let norm=x=>x.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();let ok=norm(a)===norm(q.a);return{e:ok?q.p:0,r:ok?1:0}}}
-function answerText(q,a){
- if(q.t==="one"){let v=q.o.find(x=>x[0]===a);return v?v[1]:String(a)}
- if(q.t==="many")return (a||[]).map(x=>{let v=q.o.find(y=>y[0]===x);return v?v[1]:x}).join("; ");
- if(q.t==="order"){let arr=(a||[]);return arr.map((id,i)=>{let v=q.o.find(y=>y[0]===id);return `${i+1}. ${v?v[1]:id}`}).join(" → ")}
- return String(a??"")
+const catalog=[
+{name:'Lavado de silla tapizada',unit:'unidad',rend:4,crew:1,min:0,note:'Piloto conservador: 15 min/silla · lavasillas · secado fin de semana'},
+{name:'Lavado de sillón',unit:'unidad',rend:0,note:'Definir según tamaño/puestos y condición'},
+{name:'Alfombra - boneteo',unit:'m²',rend:139,crew:1,setup:0.75,min:1.5,provisional:true,source:'CMM: spin bonnet 1,500–2,500 ft²/h; usamos extremo conservador ~139 m²/h para validación',note:'Rotativa baja + bonnet + ventiladores · referencia provisional, validar en campo'},
+{name:'Alfombra - extracción profunda',unit:'m²',rend:56,crew:1,setup:1,min:2,provisional:true,source:'CMM: extractor portátil 600–1,200 ft²/h; usamos extremo conservador ~56 m²/h. ISSA reporta ~37 m²/h en casos extremos',note:'Extractora + ventiladores · referencia provisional, validar en campo'},
+{name:'Diamantado piso duro 3M',unit:'m²',rend:0,crew:3,note:'20” baja · Gold/Red/Blue · 6 pasadas con traslape · Clean & Shine · sellador · morado · beige'},
+{name:'Protección piso resiliente/vinílico',unit:'m²',rend:0,crew:3,note:'Lavado/preparación + Clean & Shine + protector 3M + acabado'},
+{name:'Encerado tradicional',unit:'m²',rend:0,crew:2,note:'Lavado/decapado según condición + acabado Vectra/Shine según producto'},
+{name:'Lavado profundo de piso',unit:'m²',rend:75,crew:2,setup:0.75,min:1.5,provisional:true,source:'Supuesto técnico provisional del piloto: 75 m² por hora-persona. NO es estándar SBM; debe sustituirse al validar tiempos reales de campo.',note:'Rotativa baja; bordes manuales'},
+{name:'Limpieza de baños',unit:'m²',rend:0,crew:1,note:'Profunda / especial'},
+{name:'Limpieza de lobby/cafetería',unit:'m²',rend:0,crew:1,note:'Profunda / especial'},
+{name:'Persianas / cortinas',unit:'m²',rend:0,crew:1,note:'Método según material'},
+{name:'Paneles tapizados',unit:'m²',rend:0,crew:1,note:'Método según material'},
+{name:'Limpieza en altura',unit:'m²',rend:0,crew:2,note:'Scissor lift cuando corresponda'},
+{name:'Cuarto limpio - limpieza profunda',unit:'m²',rend:0,crew:2,note:'Proceso especializado; parámetros por definir'},
+{name:'Trampa de grasa',unit:'trampa',rend:1/3,crew:1,min:3,note:'Referencia Avenida Escazú: mínimo facturable 3 h · SC200 · consumibles del site'},
+{name:'Pintura interior',unit:'m²',rend:0,crew:2,note:'Preparación + reparación + primer si aplica + manos según fabricante'},
+{name:'Pintura exterior',unit:'m²',rend:0,crew:2,note:'Preparación + producto exterior + acceso/altura'},
+{name:'Pintura gradas/pasamanos',unit:'m lineal',rend:0,crew:2,note:'Rendimiento por validar'},
+{name:'Demarcación parqueo / línea amarilla',unit:'m lineal',rend:0,crew:2,note:'Preparación + pintura de tráfico'},
+{name:'Fumigación / control de plagas',unit:'servicio',rend:0,crew:1,note:'Subcontratado. Referencia Uber: 250 m² = ₡40.000 tarifa especial'},
+{name:'Super Clean / evento especial',unit:'servicio',rend:0,crew:1,note:'Usar como paquete: agregar cada actividad por separado para sumar cargas'},
+{name:'Otro / manual',unit:'servicio',rend:0,crew:1,note:'Entrada manual editable'}];
+let state={services:[],labor:[],materials:[]};
+const $=id=>document.getElementById(id);const servicio=$('servicio');catalog.forEach((x,i)=>servicio.add(new Option(x.name,i)));Object.keys(rates).forEach(x=>{$('puesto').add(new Option(x,x));$('puestoServicio').add(new Option(x,x))});
+function pickService(){let x=catalog[+servicio.value];$('unidad').value=x.unit;$('rendimiento').value=x.rend||'';$('cuadrilla').value=x.crew||1;$('minhoras').value=x.min||0;$('tiempoFijo').value=x.setup||0;$('metodo').value=x.note||'';previewService()}servicio.onchange=pickService;pickService();
+function save(){if($('guardar').checked)localStorage.setItem('lillyCotizador08',JSON.stringify({state,meta:{cliente:$('cliente').value,site:$('site').value,fecha:$('fecha').value,ejec:$('ejec').value,estado:$('estado').value,margen:$('margen').value,descuento:$('descuento').value,precioManual:$('precioManual').value,vigencia:$('vigencia').value}}))}
+function load(){try{let d=JSON.parse(localStorage.getItem('lillyCotizador08'));if(!d)return;state=d.state||state;state.services=(state.services||[]).map(x=>({...x,duration:x.duration??((x.hours||0)/(x.crew||1)),role:x.role||'Misceláneos',type:x.type||'Ordinaria',laborCost:x.laborCost||0}));Object.entries(d.meta||{}).forEach(([k,v])=>{if($(k))$(k).value=v})}catch(e){}}
+function estimateArea(){
+ let type=$('tipoEspacio').value, feel=+$('ajusteEspacio').value||1, area=0, basis='', formula='', base=0;
+ let feelText=$('ajusteEspacio').selectedOptions[0].text.toLowerCase();
+ if(type==='Sala de reuniones'){
+   let n=+$('capMesa').value||4, extra=+$('extrasSala').value||0;
+   base=7+n*1.35+extra*0.75; area=base*feel;
+   basis=`Sala para ${n} personas${extra?` + ${extra} asiento(s)/mueble(s) extra`:''}, espacio ${feelText}`;
+   formula=`Base 7 m² + (${n} personas × 1,35 m²) + (${extra} extras × 0,75 m²) = ${base.toFixed(1)} m²; factor ${feelText} × ${feel.toFixed(2)}.`;
+ }else if(type==='Lobby'){
+   let desk=+$('tamRecepcion').value||1.5, seats=+$('asientosLobby').value||0;
+   base=10+desk*5+seats*1.6; area=base*feel;
+   basis=`Lobby con recepción ${$('tamRecepcion').selectedOptions[0].text.toLowerCase()}${seats?` + ${seats} asiento(s)`:''}, espacio ${feelText}`;
+   formula=`Base de circulación 10 m² + recepción (${desk.toFixed(1)} × 5 m²) + (${seats} asientos × 1,6 m²) = ${base.toFixed(1)} m²; factor ${feelText} × ${feel.toFixed(2)}.`;
+ }else if(type==='Oficina'||type==='Área abierta'){
+   let n=+$('puestosTrabajo').value||1; base=6+n*5.5; area=base*feel;
+   basis=`${n} puesto(s) de trabajo, espacio ${feelText}`;
+   formula=`Base 6 m² + (${n} puestos × 5,5 m²) = ${base.toFixed(1)} m²; factor ${feelText} × ${feel.toFixed(2)}.`;
+ }else if(type==='Comedor'){
+   let n=+$('puestosComedor').value||4; base=8+n*1.8; area=base*feel;
+   basis=`Comedor para ~${n} personas, espacio ${feelText}`;
+   formula=`Base de servicio/circulación 8 m² + (${n} personas × 1,8 m²) = ${base.toFixed(1)} m²; factor ${feelText} × ${feel.toFixed(2)}.`;
+ }else{
+   base=25; area=base*feel; basis=`Referencia general de espacio ${feelText}`;
+   formula=`Base provisional 25 m² × factor ${feelText} ${feel.toFixed(2)}.`;
+ }
+ area=Math.max(6,Math.round(area*10)/10);
+ let extra=$('refEspacio')&&$('refEspacio').value.trim();
+ return {area,why:`Área estimada: <b>${area.toFixed(1)} m²</b><br><b>Cómo se estimó:</b> ${formula}<br><span class="hint">Referencia usada: ${basis}${extra?` · Nota adicional: ${extra}`:''}. Esta fórmula es una ayuda preliminar y puede reemplazarse por una medida real.</span>`};
 }
-function correctText(q){return answerText(q,q.a)}
-function feedbackWhy(q){if(q.why)return q.why;if(q.t==="order")return "La secuencia correcta prioriza primero el mayor riesgo o impacto y después asegura continuidad, comunicación y cierre.";if(q.t==="many")return "La respuesta requiere considerar simultáneamente todos los factores relevantes del caso, no solo uno de ellos.";if(q.t==="num")return "Revise los datos del caso y el cálculo solicitado; la cifra correcta se obtiene directamente de esas variables.";return "La alternativa correcta es la que mejor protege seguridad, cumplimiento, continuidad operativa, cliente y trazabilidad con la información disponible."}
-function finish(){let total=0,crit=0,det=[];for(let q of S.case.q){let a=answer(q);if(a==null||a===""||(Array.isArray(a)&&!a.length)){alert("Falta responder una o más preguntas.");return}let s=score(q,a);total+=s.e;if(q.c&&s.r<.6)crit++;det.push({...s,a:a,x:q.x,p:q.p,c:q.c})}let pct=total,l=pct>=80?3:pct>=60?2:pct>=35?1:0;if(crit&&l>2)l=2;let labels=["No iniciado","Conocimiento básico","Ejecución asistida","Autónomo","Dominio validado"];let rec={date:new Date().toISOString(),name:S.n,code:S.c,project:S.p,title:S.b.title,instrument:S.b.code,role:S.role,case:S.ci+1,score:pct,level:l,label:labels[l],autonomous:l>=3};let h=getHist();h.push(rec);localStorage.setItem("sbm_v6",JSON.stringify(h));show("result");$("summary").innerHTML=`<div class=notice><div class=score>${pct}/100</div><strong>Nivel ${l} · ${labels[l]}</strong><br><span class=small>La evaluación puede demostrar hasta nivel 3. Nivel 4 requiere validación avanzada/práctica.</span><br>Puede hacerlo solo: <strong>${l>=3?"Sí":"No"}</strong><br>Preguntas importantes con menos de 60%: ${crit}</div><table><tr><th>Participante</th><td>${E(S.n)}</td><th>Proyecto</th><td>${E(S.p||"-")}</td></tr><tr><th>Prueba</th><td>${E(S.b.title)}</td><th>Caso</th><td>${S.ci+1}</td></tr></table>`;$("detail").innerHTML=`<h3>Detalle y retroalimentación</h3><table><tr><th>#</th><th>Pregunta</th><th>Resultado</th><th>Puntos</th></tr>${det.map((d,i)=>`<tr><td>${i+1}</td><td>${E(d.x)}</td><td>${d.e===d.p?"✅ Correcto":d.e>0?"🟡 Parcial":"❌ Incorrecto"}${d.z?` (${d.h}/${d.z} bien ubicados)`:""}</td><td>${d.e}/${d.p}</td></tr>${d.e===d.p?"":`<tr><td></td><td colspan=3><div class=notice><strong>Tu respuesta:</strong> ${E(answerText(S.case.q[i],d.a))}<br><strong>Respuesta esperada:</strong> ${E(correctText(S.case.q[i]))}<br><strong>Por qué:</strong> ${E(feedbackWhy(S.case.q[i]))}</div></td></tr>`}`).join("")}</table>`}
-function getHist(){return JSON.parse(localStorage.getItem("sbm_v6")||localStorage.getItem("sbm_v5")||"[]")}
-function dashboard(){let h=getHist(),c=$("dashContent");if(!h.length){c.innerHTML="<div class=notice>Todavía no hay evaluaciones guardadas.</div>";return}let avg=Math.round(h.reduce((a,b)=>a+b.score,0)/h.length),auto=h.filter(x=>x.autonomous).length,by={};h.forEach(x=>(by[x.title]??=[]).push(x.score));c.innerHTML=`<div class=grid3><div class=notice><strong>Evaluaciones</strong><div class=score>${h.length}</div></div><div class=notice><strong>Promedio</strong><div class=score>${avg}</div></div><div class=notice><strong>Autonomía</strong><div class=score>${auto}</div></div></div><h3>Promedio por competencia</h3><table><tr><th>Competencia</th><th>Cantidad</th><th>Promedio</th></tr>${Object.entries(by).map(([k,v])=>`<tr><td>${E(k)}</td><td>${v.length}</td><td>${Math.round(v.reduce((a,b)=>a+b,0)/v.length)}</td></tr>`).join("")}</table>`}
-function history(){let h=getHist(),c=$("historyContent");c.innerHTML=!h.length?"<div class=notice>Todavía no hay evaluaciones.</div>":`<table><tr><th>Fecha</th><th>Persona</th><th>Proyecto</th><th>Prueba</th><th>Caso</th><th>Nota</th><th>Nivel</th></tr>${[...h].reverse().map(r=>`<tr><td>${new Date(r.date).toLocaleString()}</td><td>${E(r.name)}</td><td>${E(r.project||"-")}</td><td>${E(r.title)}</td><td>${r.case}</td><td>${r.score}</td><td>${r.level} · ${E(r.label)}</td></tr>`).join("")}</table>`}
-function config(){let rows=Object.values(BANK).map(b=>`<tr><td>${E(b.code)}</td><td>${E(b.title)}</td><td>${b.cases.length}</td></tr>`).join("");$("configContent").innerHTML=`<h3>Banco de pruebas</h3><table><tr><th>Código</th><th>Competencia</th><th>Casos disponibles</th></tr>${rows}</table><h3>Escala</h3><table><tr><th>Nivel</th><th>Resultado</th></tr><tr><td>4</td><td>90–100</td></tr><tr><td>3</td><td>80–89</td></tr><tr><td>2</td><td>60–79</td></tr><tr><td>1</td><td>35–59</td></tr><tr><td>0</td><td>0–34</td></tr></table><p class=small>Los casos se seleccionan al azar. Las preguntas de ordenar y selección múltiple permiten puntaje parcial.</p>`}
-function exitTest(){if(confirm("¿Desea salir?"))show("inicio")}
-
-const ROLE_LABELS={leader:"Leader Ready",coord:"Coordinator Ready",pm:"PM Ready"};
-const ROLE_REQ={
- leader:{com:2,iso:2,people:2,lead:2,safety:2,ops:2},
- coord:{com:3,doc:3,excel:3,kpi:3,iso:3,admin:3,fin:2,people:3,lead:3,client:3,safety:3,ops:3,scope:3},
- pm:{com:4,doc:4,excel:4,kpi:4,iso:4,admin:4,fin:4,people:4,lead:4,client:4,safety:4,ops:4,scope:4}
+function estimatorUI(){
+ let type=$('tipoEspacio').value;
+ document.querySelectorAll('.estMeeting').forEach(x=>x.classList.toggle('hidden',type!=='Sala de reuniones'));
+ document.querySelectorAll('.estLobby').forEach(x=>x.classList.toggle('hidden',type!=='Lobby'));
+ document.querySelectorAll('.estWork').forEach(x=>x.classList.toggle('hidden',!(type==='Oficina'||type==='Área abierta')));
+ document.querySelectorAll('.estDining').forEach(x=>x.classList.toggle('hidden',type!=='Comedor'));
+ if($('areaEstResultado')) $('areaEstResultado').innerHTML=estimateArea().why+'<br><span class="hint">Puedes usar esta cifra ahora y reemplazarla después por una medida confirmada.</span>';
+}
+function calcDraft(){
+ let c=catalog[+servicio.value],areaMode=$('modoArea').value,q=+$('cantidad').value||0;
+ if(areaMode==='dimensiones'){q=(+$('largo').value||0)*(+$('ancho').value||0)}else if(areaMode==='estimada'){q=estimateArea().area}
+ let r=+$('rendimiento').value||0,f=+$('condicion').value||1,minDuration=+$('minhoras').value||0,setup=+$('tiempoFijo').value||0,crew=Math.max(1,+$('cuadrilla').value||1),mode=$('modoTiempo').value,per=+$('horasManual').value||0;
+ let hp=0,duration=0,productiveHP=0,productiveDuration=0,setupHP=0,msg='',minimumApplied=false;
+ if(mode==='manual'){
+   if(per<=0){msg='⚠️ Indica cuántas horas trabajará cada persona.'}else{duration=per;hp=per*crew}
+ }else if(r>0&&q>0){
+   productiveHP=(q/r)*f;
+   productiveDuration=productiveHP/crew;
+   setupHP=setup*crew;
+   duration=productiveDuration+setup;
+   if(minDuration>0&&duration<minDuration){duration=minDuration;minimumApplied=true}
+   hp=duration*crew;
+ }else if(minDuration>0){
+   duration=minDuration;hp=duration*crew;minimumApplied=true;
+ }else{msg='⚠️ Este servicio todavía no tiene un rendimiento de referencia. Puedes usar tiempo manual mientras validamos el estándar.'}
+ let role=$('puestoServicio').value,sh=$('jornadaServicio').value,t=$('tipoHoraServicio').value,rate=role&&rates[role]?rates[role][sh][t]:0,cost=hp*rate;
+ return{c,q,r,f,minDuration,setup,crew,mode,per,hp,duration,productiveHP,productiveDuration,setupHP,minimumApplied,msg,role,sh,t,rate,cost}
+}
+function previewService(){
+ if(!$('previewServicio'))return;let d=calcDraft();$('horasManual').disabled=$('modoTiempo').value!=='manual';
+ if(d.msg){$('previewServicio').className='notice';$('previewServicio').innerHTML=d.msg;return}
+ let tipo={ord:'Ordinaria',extra:'Extra 1.5',doble:'Doble'}[d.t],jor={dia:'Diurna',mixta:'Mixta',nocturna:'Nocturna'}[d.sh];$('previewServicio').className='notice ok';
+ let src=d.c.provisional?`<div class="source">⚠️ Parámetros provisionales para revisión: ${d.c.source}</div>`:'';
+ let est=$('modoArea').value==='estimada'?`<div class="source">📐 ${estimateArea().why}</div>`:'';
+ let calc='';
+ if(d.mode==='auto'&&d.r>0){
+   calc=`<div style="margin-top:7px"><b>Desglose del tiempo</b><br><span class="hint">Producción: ${d.q.toFixed(1)} ÷ ${d.r.toFixed(1)} × factor ${d.f.toFixed(2)} = ${d.productiveHP.toFixed(2)} horas-persona (${d.productiveDuration.toFixed(2)} h de reloj con ${d.crew} persona(s)).<br>Preparación + cierre: ${d.setup.toFixed(2)} h de reloj = ${d.setupHP.toFixed(2)} horas-persona.${d.minDuration>0?`<br>Duración mínima operativa configurada: ${d.minDuration.toFixed(2)} h${d.minimumApplied?' <b>→ aplicada</b>':' → no fue necesario aplicarla'}.`:''}<br><b>Duración final: ${d.duration.toFixed(2)} h · ${d.hp.toFixed(2)} horas-persona.</b></span></div>`;
+ }
+ $('previewServicio').innerHTML=`✓ Área/cantidad usada: <b>${d.q.toFixed(2)} ${$('unidad').value}</b><br>Tiempo estimado: <b>${d.duration.toFixed(2)} h</b> · ${d.crew} persona(s) · <b>${d.hp.toFixed(2)} horas-persona</b>${calc}<br>Mano de obra: ${d.role} · ${jor} · ${tipo} · ${money(d.rate)}/h → <b>${money(d.cost)}</b>${src}${est}`
+}
+function render(){let hs=0,serviceMO=0;$('tablaServicios').innerHTML=state.services.map((x,i)=>{hs+=x.hours;serviceMO+=x.laborCost||0;return `<tr><td>${x.name}</td><td>${x.qty} ${x.unit}</td><td>${x.duration.toFixed(2)} h</td><td>${x.crew}</td><td>${x.hours.toFixed(2)}</td><td>${x.role}<br><span class="tag">${x.type}</span></td><td>${money(x.laborCost||0)}</td><td>${x.note}</td><td><button class="danger" onclick="delS(${i})">×</button></td></tr>`}).join('');
+let extraMO=0;$('tablaMO').innerHTML=state.labor.map((x,i)=>{extraMO+=x.total;return `<tr><td>${x.role}</td><td>${x.shift}</td><td>${x.type}</td><td>${x.hours}</td><td>${money(x.rate)}</td><td>${money(x.total)}</td><td><button class="danger" onclick="delL(${i})">×</button></td></tr>`}).join('');let mo=serviceMO+extraMO,mt=0;$('tablaMat').innerHTML=state.materials.map((x,i)=>{mt+=x.total;return `<tr><td>${x.name}</td><td>${x.cat}</td><td>${x.qty}</td><td>${money(x.price)}</td><td>${money(x.total)}</td><td><button class="danger" onclick="delM(${i})">×</button></td></tr>`}).join('');
+let cost=mo+mt,margin=(+$('margen').value||0)/100,base=margin<1?cost/(1-margin):cost,disc=(+$('descuento').value||0)/100,auto=base*(1-disc),manual=+$('precioManual').value,price=manual>0?manual:auto;$('kHoras').textContent=hs.toFixed(2);$('kMO').textContent=money(mo);$('kMat').textContent=money(mt);$('kPrecio').textContent=money(price);let uplift=base-cost,discountAmt=base-auto;let resultMargin=price?((price-cost)/price*100):0;$('desglose').innerHTML=`<table><tbody><tr><td>Costo mano de obra</td><td class="right"><b>${money(mo)}</b></td></tr><tr><td>Materiales / otros gastos</td><td class="right"><b>${money(mt)}</b></td></tr><tr><td><b>Costo registrado</b></td><td class="right"><b>${money(cost)}</b></td></tr><tr><td>Ajuste comercial para margen objetivo (${$('margen').value||0}%)</td><td class="right">${money(uplift)}</td></tr><tr><td>Precio antes de descuento</td><td class="right">${money(base)}</td></tr><tr><td>Descuento (${$('descuento').value||0}%)</td><td class="right">-${money(discountAmt)}</td></tr><tr><td><b>Precio propuesto</b></td><td class="right"><b>${money(price)}</b></td></tr><tr><td>Margen resultante</td><td class="right">${resultMargin.toFixed(1)}%</td></tr></tbody></table><div class="hint">⚠️ Este desglose usa la lógica comercial del piloto. Aún debe compararse rubro por rubro con el COM-F-04 antes de considerarlo cálculo oficial SBM.</div>`;let alerts=[];if(price>0&&price<cost)alerts.push(`<div class="notice">⚠️ Precio propuesto menor que el costo registrado (${money(cost)}).</div>`);if(manual>0)alerts.push(`<div class="notice ok">Precio manual negociado activo. Margen resultante: ${price?((price-cost)/price*100).toFixed(1):0}%.</div>`);if(state.services.some(x=>x.mode==='manual'))alerts.push(`<div class="notice ok">Hay servicios calculados con tiempo manual informado por el usuario.</div>`);$('alertas').innerHTML=alerts.join('<br>');save();previewService()}
+window.delS=i=>{state.services.splice(i,1);render()};window.delL=i=>{state.labor.splice(i,1);render()};window.delM=i=>{state.materials.splice(i,1);render()};
+$('addServicio').onclick=()=>{let d=calcDraft();if(d.msg){previewService();return}state.services.push({name:d.c.name,qty:d.q,unit:$('unidad').value,rate:d.r,hours:d.hp,duration:d.duration,crew:d.crew,note:$('metodo').value,mode:d.mode,role:d.role,shift:{dia:'Diurna',mixta:'Mixta',nocturna:'Nocturna'}[d.sh],type:{ord:'Ordinaria',extra:'Extra 1.5',doble:'Doble'}[d.t],laborRate:d.rate,laborCost:d.cost,areaMode:$('modoArea').value,areaEstimated:$('modoArea').value==='estimada',source:d.c.source||'',setup:d.setup,minDuration:d.minDuration,productiveHP:d.productiveHP,minimumApplied:d.minimumApplied});render()};
+$('addMO').onclick=()=>{let role=$('puesto').value,sh=$('jornada').value,t=$('tipoHora').value,h=+$('horasMO').value||0,r=rates[role][sh][t];state.labor.push({role,shift:{dia:'Diurna',mixta:'Mixta',nocturna:'Nocturna'}[sh],type:{ord:'Ordinaria',extra:'Extra 1.5',doble:'Doble'}[t],hours:h,rate:r,total:h*r});render()};
+$('addMat').onclick=()=>{let q=+$('matCant').value||0,p=+$('matPrecio').value||0;state.materials.push({name:$('matNombre').value||'Concepto manual',cat:$('matCat').value,qty:q,price:p,total:q*p});render()};
+['margen','descuento','precioManual','cliente','site','fecha','ejec','estado','vigencia'].forEach(id=>$(id).addEventListener('input',render));
+['cantidad','unidad','condicion','modoTiempo','cuadrilla','horasManual','puestoServicio','jornadaServicio','tipoHoraServicio','rendimiento','minhoras','tiempoFijo','metodo','modoArea','largo','ancho','ajusteEspacio','tipoEspacio','refEspacio','capMesa','extrasSala','tamRecepcion','asientosLobby','puestosTrabajo','puestosComedor'].forEach(id=>$(id).addEventListener('input',previewService));
+function areaUI(){let m=$('modoArea').value;$('areaDims').classList.toggle('hidden',m!=='dimensiones');$('areaEst').classList.toggle('hidden',m!=='estimada');if(m==='dimensiones'){let a=(+$('largo').value||0)*(+$('ancho').value||0);$('areaCalc').innerHTML=a>0?`✓ Área calculada: <b>${a.toFixed(2)} m²</b>`:'Ingresa largo y ancho; la app calculará los m².'}if(m==='estimada')estimatorUI();previewService()}$('modoArea').addEventListener('change',areaUI);$('largo').addEventListener('input',areaUI);$('ancho').addEventListener('input',areaUI);
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{function areaUI(){let m=$('modoArea').value;$('areaDims').classList.toggle('hidden',m!=='dimensiones');$('areaEst').classList.toggle('hidden',m!=='estimada');if(m==='dimensiones'){let a=(+$('largo').value||0)*(+$('ancho').value||0);$('areaCalc').innerHTML=a>0?`✓ Área calculada: <b>${a.toFixed(2)} m²</b>`:'Ingresa largo y ancho; la app calculará los m².'}if(m==='estimada')estimatorUI();previewService()}$('modoArea').addEventListener('change',areaUI);$('largo').addEventListener('input',areaUI);$('ancho').addEventListener('input',areaUI);
+document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.tabpane').forEach(x=>x.classList.add('hidden'));$(b.dataset.tab).classList.remove('hidden')});
+function limpiarFormularioServicio(){
+ $('cantidad').value='1'; $('modoArea').value='exacta'; $('unidad').value='unidad'; $('condicion').value='1';
+ $('largo').value=''; $('ancho').value=''; $('tipoEspacio').value='Sala de reuniones'; $('ajusteEspacio').value='1';
+ $('capMesa').value='12'; $('extrasSala').value='0'; $('tamRecepcion').value='1.5'; $('asientosLobby').value='0';
+ $('puestosTrabajo').value='6'; $('puestosComedor').value='12'; $('refEspacio').value='';
+ $('modoTiempo').value='auto'; $('cuadrilla').value='1'; $('horasManual').value=''; $('horasManual').disabled=true;
+ $('jornadaServicio').value='dia'; $('tipoHoraServicio').value='ord'; $('rendimiento').value=''; $('minhoras').value='0'; $('tiempoFijo').value='0'; $('metodo').value='';
+ areaUI(); estimatorUI(); previewService();
+}
+$('limpiarServicio').onclick=()=>{limpiarFormularioServicio();};
+$('limpiar').onclick=()=>{if(confirm('¿Iniciar una nueva cotización?\n\nSe limpiarán cliente, site, servicios, mano de obra, materiales, gastos y cálculos del borrador actual.')){
+ state={services:[],labor:[],materials:[]};
+ ['cliente','site','precioManual'].forEach(x=>$(x).value='');
+ $('estado').value='Borrador'; $('descuento').value='0';
+ $('fecha').value=new Date().toISOString().slice(0,10); $('ejec').value='';
+ localStorage.removeItem('lillyCotizador06'); localStorage.removeItem('lillyCotizador07');
+ limpiarFormularioServicio(); render();
+}};
+$('duplicar').onclick=()=>{let copy=JSON.parse(JSON.stringify(state));state=copy;$('estado').value='Borrador';$('cliente').value=$('cliente').value+' (copia)';render();alert('Cotización duplicada como borrador. Puedes modificar cualquier línea.')};
+$('exportar').onclick=()=>{
+ const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+ let mo=state.labor.reduce((a,x)=>a+x.total,0)+state.services.reduce((a,x)=>a+(x.laborCost||0),0), mt=state.materials.reduce((a,x)=>a+x.total,0), cost=mo+mt;
+ let margin=(+$('margen').value||0)/100, base=margin<1?cost/(1-margin):cost, disc=(+$('descuento').value||0)/100, auto=base*(1-disc), manual=+$('precioManual').value, price=manual>0?manual:auto;
+ let rows=state.services.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.qty)} ${esc(x.unit)}</td><td>${esc(x.note||'')}</td></tr>`).join('')||'<tr><td colspan="3">Sin servicios agregados</td></tr>';
+ let extras=state.materials.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.cat)}</td><td>${esc(x.qty)}</td></tr>`).join('');
+ let w=window.open('','_blank'); if(!w){alert('Permite ventanas emergentes para generar la vista PDF.');return;}
+ w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Cotización - ${esc($('cliente').value||'Cliente')}</title><style>@page{size:A4;margin:16mm}body{font-family:Arial,sans-serif;color:#172536;margin:0;font-size:12px}.head{border-bottom:3px solid #1769aa;padding-bottom:12px;margin-bottom:18px}.brand{font-size:22px;font-weight:800;color:#0b3155}.sub{color:#60758a;margin-top:4px}.meta{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;margin:18px 0}.meta div{border-bottom:1px solid #d9e2ea;padding:6px 0}.label{font-size:10px;color:#6c7d8e;text-transform:uppercase;display:block}.value{font-weight:700;margin-top:3px}h2{font-size:14px;color:#0b3155;margin-top:22px}table{width:100%;border-collapse:collapse}th{background:#eef5fa;color:#0b3155;text-align:left;font-size:10px;text-transform:uppercase}th,td{padding:8px;border-bottom:1px solid #dfe7ee;vertical-align:top}.total{margin-top:24px;margin-left:auto;width:300px;border:1px solid #ccd9e3;border-radius:8px;padding:14px}.total strong{font-size:21px;color:#0b3155;float:right}.note{margin-top:28px;color:#6c7d8e;font-size:10px}.no-print{margin:0 0 16px;padding:10px;background:#eef5fa;border-radius:8px}.btn{background:#1769aa;color:white;border:0;border-radius:6px;padding:9px 14px;font-weight:bold;cursor:pointer}@media print{.no-print{display:none}}</style></head><body><div class="no-print"><button class="btn" onclick="window.print()">Guardar como PDF / Imprimir</button> &nbsp; En la ventana de impresión selecciona <b>Guardar como PDF</b>.</div><div class="head"><div class="brand">LillyTech · Cotización Facility Services</div><div class="sub">Resumen de alcance para validación</div></div><div class="meta"><div><span class="label">Cliente</span><span class="value">${esc($('cliente').value||'—')}</span></div><div><span class="label">Proyecto / Site</span><span class="value">${esc($('site').value||'—')}</span></div><div><span class="label">Fecha cotización</span><span class="value">${esc($('fecha').value||'—')}</span></div><div><span class="label">Fecha ejecución</span><span class="value">${esc($('ejec').value||'—')}</span></div></div><h2>Servicios incluidos</h2><table><thead><tr><th>Servicio</th><th>Cantidad</th><th>Alcance / método</th></tr></thead><tbody>${rows}</tbody></table>${extras?`<h2>Materiales y conceptos adicionales</h2><table><thead><tr><th>Concepto</th><th>Categoría</th><th>Cantidad</th></tr></thead><tbody>${extras}</tbody></table>`:''}<div class="total"><span>Precio propuesto</span><strong>${money(price)}</strong><div style="clear:both"></div></div><div class="note">Documento generado desde LillyTech Cotizador Facility Services · Piloto v0.7. Los alcances, cantidades y condiciones están sujetos a validación final.</div></body></html>`);w.document.close();
 };
-const NAMES={com:"Comunicación Profesional",doc:"Gestión Documental",excel:"Excel Operativo",kpi:"Indicadores y Plan de Acción",iso:"Calidad e ISO 9001",admin:"Administración del Proyecto",fin:"Presupuesto y Control Financiero",people:"Personas y Onboarding",lead:"Liderazgo y Priorización",ai:"IA Aplicada y Uso Responsable",client:"Gestión del Cliente",safety:"Seguridad / EHS",ops:"Gestión Operativa",scope:"Gestión Contractual y Scope",digital:"Herramientas Digitales"};
-const DEV={0:"Formación prioritaria desde fundamentos",1:"Formación prioritaria + práctica guiada",2:"Refuerzo + práctica supervisada",3:"Validación en site / mantener",4:"Competencia demostrada / posible mentor"};
-function roleChanged(){let r=$("role").value, req=ROLE_REQ[r]; $("roleInfo").innerHTML=`<strong>${ROLE_LABELS[r]}</strong> · Nivel requerido por competencia: ${r==='leader'?'2 (ejecución con apoyo)':r==='coord'?'principalmente 3 (autónomo)':'4 (requiere validación avanzada/práctica; el examen llega hasta nivel 3)'}.<br><span class=small>La V6.3 compara resultados contra el perfil objetivo y construye una ruta de desarrollo individual.</span>`}
-function pctLevel(p){return p>=80?3:p>=60?2:p>=35?1:0}
-function showProfile(){show('profile')}
-function profile(){let h=getHist(),c=$("profileContent");let code=$("codigo")?.value.trim();if(!code&&h.length)code=h[h.length-1].code;if(!code){c.innerHTML='<div class=notice>Escriba primero la cédula o código de la persona en Evaluación.</div>';return}let rows=h.filter(x=>x.code===code), role=$("role")?.value||rows.at(-1)?.role||'coord';let req=ROLE_REQ[role],latest={};rows.forEach(x=>{let key=Object.keys(BANK).find(k=>BANK[k].code===x.instrument);if(key)latest[key]=x});let person=rows.at(-1)?.name||$("nombre")?.value||code;let out=[],gaps=[];Object.entries(req).forEach(([k,need])=>{let r=latest[k],lv=r?pctLevel(r.score):null,status=lv===null?'Pendiente':lv>=need?'Demostrada':'Brecha';if(status==='Brecha'||status==='Pendiente')gaps.push([k,lv,need]);out.push(`<tr><td>${E(NAMES[k]||k)}</td><td>${need}</td><td>${lv===null?'—':lv}</td><td>${r?r.score+'%':'Sin evaluar'}</td><td>${status==='Demostrada'?'✅ ':status==='Brecha'?'🔶 ':'⬜ '}${status}</td></tr>`)});let done=out.length-gaps.filter(x=>x[1]===null).length,dem=Object.entries(req).filter(([k,n])=>latest[k]&&pctLevel(latest[k].score)>=n).length;c.innerHTML=`<div class=notice><strong>${E(person)}</strong> · ${ROLE_LABELS[role]}<br><span class=small>Competencias demostradas: ${dem}/${out.length}. La ausencia de una evaluación significa “pendiente”, no “brecha”. El examen escrito/práctico puede demostrar hasta nivel 3; el nivel 4 requiere validación avanzada en site, mejora demostrada o capacidad de formar a otros.</span></div><table><tr><th>Competencia</th><th>Nivel requerido</th><th>Nivel actual</th><th>Evidencia</th><th>Estado</th></tr>${out.join('')}</table><h3>Ruta de desarrollo</h3>${gaps.length?`<table><tr><th>Prioridad</th><th>Competencia</th><th>Acción</th></tr>${gaps.map(([k,l,n],i)=>`<tr><td>${i+1}</td><td>${E(NAMES[k])}</td><td>${l===null?'Realizar evaluación diagnóstica':DEV[l]+' → reevaluar hasta nivel '+n}</td></tr>`).join('')}</table>`:'<div class=notice>✅ Todas las competencias evaluadas alcanzan el nivel requerido para este perfil.</div>'}`}
-
-roleChanged();config();
+['tipoEspacio','ajusteEspacio','capMesa','extrasSala','tamRecepcion','asientosLobby','puestosTrabajo','puestosComedor','refEspacio'].forEach(id=>$(id)&&$(id).addEventListener('input',()=>{estimatorUI();previewService()}));
+$('fecha').value=$('fecha').value||new Date().toISOString().slice(0,10);load();estimatorUI();areaUI();render();
 </script></body></html>
